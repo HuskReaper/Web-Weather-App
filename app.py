@@ -1,6 +1,6 @@
 # Import needed libraries #
-from flask import Flask, render_template, request, abort
 import json, urllib
+from flask import Flask, render_template, request, abort
 
 # Start Flask App #
 app = Flask(__name__)
@@ -23,7 +23,7 @@ def retrieve_weather():
     data = {
         "country_code": str(list_of_data['sys']['country']),
         "coordinate": str(list_of_data['coord']['lon']) + ' ' + str(list_of_data['coord']['lat']),
-        "temp": str(list_of_data['main']['temp']) + ' k',
+        "temp": str(round(list_of_data['main']['temp'])) + ' k',
         "pressure": str(list_of_data['main']['pressure']),
         "humidity": str(list_of_data['main']['humidity']),
         "temp_c" : str(round(list_of_data['main']['temp'] - 272.15)) + ' c'
